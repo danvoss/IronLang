@@ -2,7 +2,6 @@ package com.dvoss;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -31,6 +30,9 @@ public class Main {
 
     static void processCommand(Scanner scanner, ArrayList<HashMap<String, String>> variables, String line) {
         line = line.trim();                                     // trim whitespace to allow indentation
+        if (line.isEmpty()) {                                   // to allow blank lines
+            return;
+        }
         String cmd = line.substring(0, line.indexOf(" "));
         String params = line.substring((line.indexOf(" ") + 1)); // note the two different substring methods
         HashMap<String, String> vars = combineMaps(variables);
